@@ -8,7 +8,7 @@ import {
   Contact,
   Sun,
   Moon,
-  Award
+  Award,
 } from "lucide-react";
 import { scrollToSection } from "./utils/smoothScroll";
 import "./FloatingDock.css";
@@ -50,17 +50,6 @@ export default function FloatingDock() {
     }
     localStorage.setItem("isLightMode", JSON.stringify(isLightMode));
   }, [isLightMode]);
-
-  // Keypress shortcut (D for Theme Toggle)
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === "d" || event.key === "D") {
-        setIsLightMode((prevMode) => !prevMode);
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
 
   // Scroll detection to hide/show dock
   useEffect(() => {
@@ -115,7 +104,9 @@ export default function FloatingDock() {
           ) : (
             <Sun className="icons" color="white" size={32} />
           )}
-          <span className="tooltip">{isLightMode ? "Dark Mode" : "Light Mode"}</span>
+          <span className="tooltip">
+            {isLightMode ? "Dark Mode" : "Light Mode"}
+          </span>
         </button>
       </div>
     </div>
