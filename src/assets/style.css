@@ -1,0 +1,51 @@
+/* Smooth out the transition curve */
+.icons {
+  padding: 5px;
+  transition:
+    transform 0.2s cubic-bezier(0.25, 1, 0.5, 1),
+    margin 0.2s ease;
+  transform-origin: bottom;
+  background-color: rgb(114, 114, 114);
+  border-radius: 50%;
+  margin: 0 5px; /* Give them a steady baseline margin instead of jumping from 0 */
+}
+
+/* Scale the hovered icon */
+.icons:hover {
+  transform: scale(1.8);
+  margin: 0 10px; /* Slight bump, not too harsh */
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* Scale the immediate siblings slightly for a wave effect */
+.content:has(.icons:hover) .icons:not(:hover) {
+  transform: scale(0.9); /* Optionally shrink non-hovered items slightly */
+}
+/* Smooth out the transition curve */
+.icons {
+  padding: 5px;
+  transition:
+    transform 0.2s cubic-bezier(0.25, 1, 0.5, 1),
+    margin 0.2s ease;
+  transform-origin: bottom;
+  background-color: rgb(114, 114, 114);
+  border-radius: 50%;
+  margin: 0 5px; /* Give them a steady baseline margin instead of jumping from 0 */
+}
+
+/* Scale the hovered icon */
+.icons:hover {
+  transform: scale(1.8);
+  margin: 0 10px; /* Slight bump, not too harsh */
+}
+
+/* Scale the immediate siblings slightly for a wave effect */
+.content:has(.icons:hover) .icons:not(:hover) {
+  transform: scale(0.9); /* Optionally shrink non-hovered items slightly */
+}

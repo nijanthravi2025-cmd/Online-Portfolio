@@ -1,0 +1,182 @@
+/* ========================================
+  MAIN DOCK CONTAINER (GLASSMORPHISM)
+  ========================================
+*/
+.dock-container {
+  position: fixed;
+  left: 50%;
+  bottom: 2%; /* EDIT HERE: Change this to push the dock higher up or lower down the screen */
+  transform-origin: bottom center;
+
+  /* EDIT HERE: Glassmorphism Colors & Blur */
+  background-color: rgba(15, 15, 15, 0.2);
+  backdrop-filter: blur(
+    12px
+  ); /* Increase for thicker glass, decrease for clearer glass */
+  border: 0px solid rgba(15, 15, 15, 0.75);
+
+  border-radius: 24px;
+  will-change: transform; /* Hardware acceleration for smoother animations */
+  z-index: 9999;
+}
+
+/* Visibility Animation Triggers */
+.dock-container.is-visible {
+  animation: pop-up-squash 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.dock-container.is-hidden {
+  animation: drop-down-hide 0.4s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+/* ========================================
+  INNER CONTENT & SPACING
+  ========================================
+*/
+.content {
+  padding: 10px 10px; /* Controls the padding inside the glass container */
+  display: flex;
+  flex-direction: row;
+  column-gap: 5px; /* Base spacing between icons */
+  transition: column-gap 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Expands the gap between ALL icons when the user hovers over the dock */
+.content:hover {
+  column-gap: 15px;
+}
+
+/* ========================================
+  ICON STYLES & HOVER PHYSICS
+  ========================================
+*/
+.icons {
+  padding: 5px 5px;
+  transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+  transform-origin: bottom;
+  border-radius: 50%;
+  margin: 0;
+  width: 26px; /* Base width */
+  height: 26px; /* Base height */
+  cursor: pointer;
+}
+
+/* Individual Icon Hover Effect */
+.icons:hover {
+  transform: scale3d(1.3, 1.3, 1); /* Grows the hovered icon by 30% */
+  margin: 0px 15px; /* Pushes neighboring icons away slightly */
+  column-gap: 20px;
+}
+
+/* ========================================
+  MATERIAL UI "SQUASH" ANIMATIONS
+  ========================================
+  These simulate real-world physics when the dock enters and leaves the screen.
+*/
+@keyframes pop-up-squash {
+  0% {
+    transform: translateX(-50%) translateY(150px) scale3d(0.8, 1.2, 1);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-8px) scale3d(0.92, 1.08, 1);
+  }
+  65% {
+    transform: translateX(-50%) translateY(4px) scale3d(1.04, 0.96, 1);
+  }
+  85% {
+    transform: translateX(-50%) translateY(-2px) scale3d(0.99, 1.01, 1);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0) scale3d(1, 1, 1);
+  }
+}
+
+@keyframes drop-down-hide {
+  0% {
+    transform: translateX(-50%) translateY(0) scale3d(1, 1, 1);
+  }
+  30% {
+    transform: translateX(-50%) translateY(4px) scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    transform: translateX(-50%) translateY(150px) scale3d(0.8, 1.2, 1);
+  }
+}
+
+/* ========================================
+  TOOLTIP STYLES
+  ========================================
+*/
+.icon-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.tooltip {
+  position: absolute;
+  top: -50px; /* EDIT HERE: Controls how high above the dock the tooltip floats */
+
+  /* Tooltip Colors & Glass Effect */
+  background-color: rgba(15, 15, 15, 0.8);
+  color: white;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  /* Text Styling */
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: sans-serif;
+  font-weight: 500;
+  white-space: nowrap;
+
+  pointer-events: none; /* Prevents the tooltip from glitching your mouse hover */
+
+  /* Initial Hidden State */
+  opacity: 0;
+  transform: translateY(10px) scale(0.9);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Animates the tooltip upward and fades it in when the icon is hovered */
+.icon-wrapper:hover .tooltip {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Vertical Divider */
+.dock-divider {
+  width: 1px;
+  background-color: rgba(255, 255, 255, 0.15);
+  margin: 5px 8px;
+  align-self: stretch;
+  transition: background-color 0.4s ease;
+}
+
+:root.light-mode .dock-divider {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Theme Toggle Button Resets */
+.theme-toggle-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+}
+
+/* Light mode specific tooltip styling */
+:root.light-mode .tooltip {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: black;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
