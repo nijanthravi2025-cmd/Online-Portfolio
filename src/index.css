@@ -20,16 +20,16 @@
 
 /* Premium Light Mode Style Override */
 :root.light-mode {
-    --bg-base: #f5f5f7;
-    --text-main: #1d1d1f;
-    --text-muted: #6e6e73;
-    --text-blog: #333333;
-    --accent: #000000;
-    --accent-glow: rgba(0, 100, 250, 0.12);
+    --bg-base: #fff5f0;
+    --text-main: #1e110b;
+    --text-muted: #7d6355;
+    --text-blog: #3e281c;
+    --accent: #ff6f43;
+    --accent-glow: rgba(255, 111, 67, 0.08);
    
-    --glass-bg: rgba(255, 255, 255, 0.65);
-    --glass-border: rgba(0, 0, 0, 0.08);
-    --glass-inner-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.7);
+    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(255, 111, 67, 0.08);
+    --glass-inner-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 * {
@@ -60,6 +60,10 @@ body {
     opacity: 0.45;
 }
 
+:root.light-mode #rain-canvas {
+    opacity: 0.85;
+}
+
 /* --- Collapsible Glass Top Navigation --- */
 .top-nav {
     position: fixed;
@@ -77,8 +81,8 @@ body {
 }
 
 :root.light-mode .top-nav {
-    background: rgba(245, 245, 247, 0.65);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    background: rgba(255, 245, 240, 0.75);
+    border-bottom: 1px solid rgba(255, 111, 67, 0.06);
 }
 
 .top-nav.is-open {
@@ -86,7 +90,7 @@ body {
 }
 
 :root.light-mode .top-nav.is-open {
-    background: rgba(245, 245, 247, 0.95);
+    background: rgba(255, 245, 240, 0.95);
 }
 
 .nav-header {
@@ -252,7 +256,7 @@ section {
     pointer-events: none;
 }
 :root.light-mode .hero-glow {
-    background: radial-gradient(circle, rgba(0, 100, 255, 0.06) 0%, transparent 60%);
+    background: radial-gradient(circle, rgba(255, 111, 67, 0.08) 0%, transparent 65%);
 }
 
 .hero-badge {
@@ -272,8 +276,8 @@ section {
     -webkit-backdrop-filter: blur(10px);
 }
 :root.light-mode .hero-badge {
-    background: rgba(0, 0, 0, 0.03);
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(255, 111, 67, 0.03);
+    border: 1px solid rgba(255, 111, 67, 0.08);
 }
 
 .centered-hero h1 {
@@ -370,8 +374,8 @@ section {
     box-shadow: 0 4px 20px rgba(255,255,255,0.15);
 }
 :root.light-mode .btn-primary:hover {
-    background: #000000;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    background: #09090b;
+    box-shadow: 0 4px 20px rgba(9, 9, 11, 0.12);
 }
 .btn-secondary {
     background: rgba(255, 255, 255, 0.08);
@@ -379,13 +383,13 @@ section {
     backdrop-filter: blur(10px);
 }
 :root.light-mode .btn-secondary {
-    background: rgba(0, 0, 0, 0.05);
+    background: rgba(255, 111, 67, 0.04);
 }
 .btn-secondary:hover {
     background: rgba(255, 255, 255, 0.15);
 }
 :root.light-mode .btn-secondary:hover {
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(255, 111, 67, 0.08);
 }
 
 /* --- Grid Layouts --- */
@@ -417,6 +421,9 @@ section {
     backdrop-filter: var(--glass-blur) saturate(180%);
     -webkit-backdrop-filter: var(--glass-blur) saturate(180%);
 }
+:root.light-mode .card {
+    box-shadow: 0 10px 40px rgba(255, 111, 67, 0.04), var(--glass-inner-shadow);
+}
 .card.small-pad {
     padding: 2rem;
 }
@@ -444,7 +451,9 @@ section {
     background: rgba(40, 40, 45, 0.35);
 }
 :root.light-mode .card.interactive:hover {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(255, 111, 67, 0.15);
+    box-shadow: 0 20px 50px rgba(255, 111, 67, 0.06), var(--glass-inner-shadow);
 }
 .card.interactive:hover::before {
     opacity: 1;
@@ -474,7 +483,7 @@ section {
     display: block;
 }
 :root.light-mode .card-date {
-    color: rgba(0,0,0,0.4);
+    color: rgba(125, 99, 85, 0.45);
 }
 .card p {
     font-size: 1rem;
@@ -505,8 +514,8 @@ section {
     letter-spacing: 0.03em;
 }
 :root.light-mode .tag {
-    background: rgba(0, 0, 0, 0.04);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    background: rgba(255, 111, 67, 0.03);
+    border: 1px solid rgba(255, 111, 67, 0.05);
 }
 
 /* --- Custom Timelines & Lists --- */
@@ -519,7 +528,7 @@ section {
     margin-left: 1rem;
 }
 :root.light-mode .timeline {
-    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    border-left: 1px solid rgba(255, 111, 67, 0.08);
 }
 .timeline-item {
     position: relative;
@@ -541,8 +550,8 @@ section {
     box-shadow: 0 0 12px rgba(100,200,255,0.5);
 }
 :root.light-mode .timeline-item:hover::before {
-    background: var(--text-main);
-    box-shadow: 0 0 12px rgba(0,100,255,0.3);
+    background: var(--accent);
+    box-shadow: 0 0 12px rgba(255, 111, 67, 0.4);
 }
 
 .timeline-title {
@@ -633,14 +642,14 @@ section {
     box-shadow: var(--glass-inner-shadow);
 }
 :root.light-mode .form-input {
-    background: rgba(0, 0, 0, 0.02);
+    background: rgba(255, 111, 67, 0.02);
     border: 1px solid var(--glass-border);
 }
 .form-input::placeholder {
     color: rgba(255, 255, 255, 0.3);
 }
 :root.light-mode .form-input::placeholder {
-    color: rgba(0, 0, 0, 0.4);
+    color: rgba(125, 99, 85, 0.4);
 }
 .form-input:focus {
     outline: none;
@@ -649,9 +658,9 @@ section {
     box-shadow: 0 0 20px rgba(100, 200, 255, 0.05), var(--glass-inner-shadow);
 }
 :root.light-mode .form-input:focus {
-    border-color: rgba(0, 100, 255, 0.3);
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 0 20px rgba(0, 100, 255, 0.05), var(--glass-inner-shadow);
+    border-color: rgba(255, 111, 67, 0.4);
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 0 20px rgba(255, 111, 67, 0.04), var(--glass-inner-shadow);
 }
 textarea.form-input {
     resize: vertical;
@@ -659,25 +668,7 @@ textarea.form-input {
 }
 
 /* --- Seamless Animations --- */
-.fade-up {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 1s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.fade-up.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.grid-2 > :nth-child(1) { transition-delay: 0.1s; }
-.grid-2 > :nth-child(2) { transition-delay: 0.2s; }
-.grid-2 > :nth-child(3) { transition-delay: 0.3s; }
-.grid-2 > :nth-child(4) { transition-delay: 0.4s; }
-
-.grid-3 > :nth-child(1) { transition-delay: 0.1s; }
-.grid-3 > :nth-child(2) { transition-delay: 0.2s; }
-.grid-3 > :nth-child(3) { transition-delay: 0.3s; }
+/* Animations handled dynamically via GSAP ScrollTrigger */
 
 /* Footer */
 footer {
